@@ -1,20 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
+import { Suspense, useState } from "react";
 import Button from "../components/Button";
 import { developer, emailCopy } from "../constants";
+import { Canvas } from "@react-three/fiber";
+import CanvasLoader from "@/components/CanvasLoader";
+import Globe from "../components/Globe";
 
 const About = () => {
-  const [isClient, setIsClient] = useState(false);
   const [hasCopied, setHasCopied] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  const Globe = isClient
-    ? dynamic(() => import("react-globe.gl"), { ssr: false })
-    : null;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(emailCopy);
@@ -24,6 +17,7 @@ const About = () => {
       setHasCopied(false);
     }, 2000);
   };
+
   return (
     <section className="c-space my-20" id="about">
       <div className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 grid-cols-1 gap-5 h-full">
@@ -61,20 +55,11 @@ const About = () => {
         <div className="col-span-1 xl:row-span-4">
           <div className="grid-container">
             <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
-              {Globe !== null ? (
-                <Globe
-                  height={326}
-                  width={326}
-                  backgroundColor="rgba(0, 0, 0, 0)"
-                  backgroundImageOpacity={0.5}
-                  showAtmosphere
-                  showGraticules
-                  globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
-                  bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-                />
-              ) : (
-                <></>
-              )}
+              <div style={{ width: "326px", height: "326px" }}>
+                <Canvas>
+                  <Globe />
+                </Canvas>
+              </div>
             </div>
             <div>
               <p className="grid-headtext">I work remotely</p>

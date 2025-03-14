@@ -56,7 +56,11 @@ const Hero = () => {
         <p className="hero_tag text-gray_gradient">Building Web Applications</p>
       </div>
 
-      <div className={`w-full h-full fixed inset-0 transition-opacity duration-1000 ${isLoading ? "opacity-0" : "opacity-100"}`}>
+      <div
+        className={`w-full h-full fixed inset-0 transition-opacity duration-1000 ${
+          isLoading ? "opacity-0" : "opacity-100"
+        }`}
+      >
         <Canvas className="w-full h-full">
           <Suspense fallback={<CanvasLoader />} />
           <PerspectiveCamera makeDefault position={[0, 0, 25]} />
