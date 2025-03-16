@@ -20,7 +20,7 @@ const ProjectsPage = ({ setActiveProject, setUrl }) => {
               }
             }}
           >
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center gap-4">
               <h2 className="text-xl font-semibold flex items-center gap-2">
                 {project.title}
               </h2>

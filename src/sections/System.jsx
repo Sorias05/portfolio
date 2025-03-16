@@ -11,6 +11,7 @@ const System = () => {
   const [isShuttingDown, setIsShuttingDown] = useState(false);
   const [isBrowserOpen, setIsBrowserOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSidebarHidden, setIsSidebarHidden] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setIsLoading(false), 2000);
@@ -62,7 +63,13 @@ const System = () => {
           </button>
         </div>
 
-        <div className="absolute left-0 top-8 bottom-0 w-14 bg-gray-900 bg-opacity-50 flex flex-col items-center p-2 space-y-4">
+        <div
+          className={`absolute z-30 left-0 top-8 bottom-0 w-14 bg-gray-900 bg-opacity-50 flex flex-col items-center p-2 space-y-4 transition-transform duration-500 ${
+            isBrowserOpen && isSidebarHidden
+              ? "-translate-x-full"
+              : "translate-x-0"
+          }`}
+        >
           <button
             className={`text-white hover:bg-gray-700 p-2 rounded ${
               isBrowserOpen && "bg-gray-800"
@@ -71,14 +78,15 @@ const System = () => {
           >
             <Chrome size={24} />
           </button>
-          {/* <button className="text-white hover:bg-gray-700 p-2 rounded">
-            <Folder size={24} />
-          </button> */}
         </div>
 
-        <div className="flex justify-end absolute left-14 top-8 bottom-0 right-0">
+        <div className="flex justify-end absolute left-0 top-8 bottom-0 right-0">
           {isBrowserOpen && (
-            <AppWindow title="Projects" onClose={() => setIsBrowserOpen(false)}>
+            <AppWindow
+              title="Projects"
+              onClose={() => setIsBrowserOpen(false)}
+              setIsSidebarHidden={setIsSidebarHidden}
+            >
               <Browser />
             </AppWindow>
           )}

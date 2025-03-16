@@ -42,7 +42,7 @@ const Browser = () => {
             project.clickable && (
               <button
                 key={project.id}
-                className={`px-2 py-1 rounded-t-md flex items-center gap-2 h-7 ${
+                className={`px-2 py-1 rounded-t-md min-w-8 h-7 ${
                   activeProject === project.id
                     ? "bg-gray-700"
                     : "bg-gray-600 hover:bg-gray-500"
@@ -52,16 +52,18 @@ const Browser = () => {
                   setUrl(project.url);
                 }}
               >
-                {project.image?.length > 0 ? (
-                  <img
-                    src={project.image || noImage2}
-                    alt={project.title}
-                    className="w-4 h-4"
-                  />
-                ) : (
-                  <Globe size={16} />
-                )}
-                <p className="text-sm">{project.title}</p>
+                <div className="flex items-center gap-2 w-full h-full overflow-hidden">
+                  {project.image?.length > 0 ? (
+                    <img
+                      src={project.image || noImage2}
+                      alt={project.title}
+                      className="w-4 h-4"
+                    />
+                  ) : (
+                    <Globe size={16} />
+                  )}
+                  <p className="text-sm text-nowrap">{project.title}</p>
+                </div>
               </button>
             )
         )}
