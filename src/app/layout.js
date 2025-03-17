@@ -2,8 +2,8 @@
 import { SessionProvider } from "next-auth/react";
 import "./globals.css";
 import Routes from "./routes";
-import Toast from "@/components/Toast";
 import { developer } from "@/constants";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function RootLayout({ children }) {
   return (
@@ -13,10 +13,10 @@ export default function RootLayout({ children }) {
         <title>{developer}</title>
       </head>
       <body className="antialiased">
-        {/* <Toast /> */}
         <SessionProvider>
           <Routes>{children}</Routes>
         </SessionProvider>
+        <Analytics />
       </body>
     </html>
   );
