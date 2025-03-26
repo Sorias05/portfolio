@@ -1,21 +1,66 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Chrome, Folder, Power } from "lucide-react";
-import Browser from "@/components/Browser";
+import { Chrome, File, Power } from "lucide-react";
 import { useFade } from "@/context/FadeContext";
+import { useWindowManager } from "@/context/WindowContext";
 import Clock from "@/components/Clock";
 import AppWindow from "@/components/AppWindow";
+import Browser from "@/components/Browser";
+import Resume from "@/components/Resume";
 
 const System = () => {
   const { setIsFading, setIsInSystem } = useFade();
+  const { bringToFront } = useWindowManager();
   const [isShuttingDown, setIsShuttingDown] = useState(false);
-  const [isBrowserOpen, setIsBrowserOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isWindowOverSidebar, setIsWindowOverSidebar] = useState(false);
   const [isSidebarHidden, setIsSidebarHidden] = useState(false);
+  const [apps, setApps] = useState([
+    {
+      id: 1,
+      title: "Projects",
+      isOpen: false,
+      isOverSidebar: false,
+      getIcon: (size) => {
+        return <Chrome size={size} />;
+      },
+      getApp: () => {
+        return <Browser />;
+      },
+    },
+    {
+      id: 2,
+      title: "Resume",
+      isOpen: false,
+      isOverSidebar: false,
+      getIcon: (size) => {
+        return <File size={size} />;
+      },
+      getApp: () => {
+        return <Resume />;
+      },
+    },
+  ]);
 
   useEffect(() => {
     setTimeout(() => setIsLoading(false), 2000);
   }, []);
+
+  useEffect(() => {
+    const isOverSidebar = apps.some(
+      ({ isOpen, isOverSidebar }) => isOpen && isOverSidebar
+    );
+
+    setIsWindowOverSidebar((prev) => {
+      if (prev === isOverSidebar) return prev;
+      return isOverSidebar;
+    });
+
+    setIsSidebarHidden((prev) => {
+      if (prev === isOverSidebar) return prev;
+      return isOverSidebar;
+    });
+  }, [apps]);
 
   const handleShutdownClick = () => {
     setIsShuttingDown(true);
@@ -33,8 +78,16 @@ const System = () => {
     }, 3500);
   };
 
+  const handleMouseMove = (e) => {
+    if (e.clientX <= 56) {
+      setIsSidebarHidden(false);
+    } else if (isWindowOverSidebar) {
+      setIsSidebarHidden(true);
+    }
+  };
+
   return (
-    <main className="w-screen h-screen">
+    <main className="w-screen h-screen" onMouseMove={handleMouseMove}>
       <div
         className={`w-full h-full black flex flex-col gap-24 items-center justify-center absolute text-white transition-opacity duration-500 ${
           isLoading ? "opacity-100" : "opacity-0"
@@ -64,40 +117,74 @@ const System = () => {
         </div>
 
         <div
-          className={`absolute z-30 left-0 top-8 bottom-0 w-14 bg-gray-900 bg-opacity-50 flex flex-col items-center p-2 space-y-4 transition-transform duration-500 ${
-            isBrowserOpen && isSidebarHidden
-              ? "-translate-x-full"
-              : "translate-x-0"
+          className={`absolute z-50 left-0 top-8 bottom-0 w-14 bg-gray-900 bg-opacity-50 flex flex-col items-center p-2 space-y-4 transition-transform duration-500 ${
+            isSidebarHidden ? "-translate-x-full" : "translate-x-0"
           }`}
         >
-          <button
-            className={`text-white hover:bg-gray-700 p-2 rounded ${
-              isBrowserOpen && "bg-gray-800"
-            }`}
-            onClick={() => setIsBrowserOpen(!isBrowserOpen)}
-          >
-            <Chrome size={24} />
-          </button>
+          {apps.map(({ id, title, isOpen, getIcon }) => (
+            <button
+              key={id}
+              className={`text-white hover:bg-gray-700 p-2 rounded ${
+                isOpen && "bg-gray-700 bg-opacity-50"
+              }`}
+              onClick={() => {
+                setApps((prevApps) =>
+                  prevApps.map((app) =>
+                    app.title === title ? { ...app, isOpen: true } : app
+                  )
+                );
+                bringToFront(title);
+              }}
+            >
+              {getIcon(24)}
+            </button>
+          ))}
         </div>
 
         <div className="flex justify-end absolute left-0 top-8 bottom-0 right-0">
-          {isBrowserOpen && (
-            <AppWindow
-              title="Projects"
-              onClose={() => setIsBrowserOpen(false)}
-              setIsSidebarHidden={setIsSidebarHidden}
-            >
-              <Browser />
-            </AppWindow>
+          {apps.map(
+            ({ id, title, isOpen, getApp }) =>
+              isOpen && (
+                <AppWindow
+                  key={id}
+                  title={title}
+                  onClose={() => {
+                    setApps((prevApps) =>
+                      prevApps.map((app) =>
+                        app.id === id ? { ...app, isOpen: false } : app
+                      )
+                    );
+                  }}
+                  setIsWindowOverSidebar={(isOver) => {
+                    setApps((prevApps) =>
+                      prevApps.map((app) =>
+                        app.id === id ? { ...app, isOverSidebar: isOver } : app
+                      )
+                    );
+                  }}
+                >
+                  {getApp()}
+                </AppWindow>
+              )
           )}
-          <div className="flex-grow flex absolute p-3">
-            <button
-              className="p-4 rounded-lg text-white flex flex-col items-center hover:bg-gray-600 hover:bg-opacity-50 selection:bg-green-600 selection:bg-opacity-50"
-              onDoubleClick={() => setIsBrowserOpen(true)}
-            >
-              <Chrome size={40} />
-              <span className="mt-2">Projects</span>
-            </button>
+          <div className="flex-grow flex flex-col absolute p-3">
+            {apps.map(({ id, title, getIcon }) => (
+              <button
+                key={id}
+                className="p-4 rounded-lg text-white flex flex-col items-center hover:bg-gray-600 hover:bg-opacity-50"
+                onDoubleClick={() => {
+                  setApps((prevApps) =>
+                    prevApps.map((app) =>
+                      app.title === title ? { ...app, isOpen: true } : app
+                    )
+                  );
+                  bringToFront(title);
+                }}
+              >
+                {getIcon(40)}
+                <span className="mt-2">{title}</span>
+              </button>
+            ))}
           </div>
         </div>
       </section>

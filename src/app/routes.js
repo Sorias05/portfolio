@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import ErrorPage from "next/error";
 import { FadeProvider, useFade } from "@/context/FadeContext";
+import { WindowManagerProvider } from "@/context/WindowContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import System from "@/sections/System";
@@ -45,7 +46,9 @@ const RoutesContent = ({ children }) => {
         }`}
       />
       {isInSystem ? (
-        <System />
+        <WindowManagerProvider>
+          <System />
+        </WindowManagerProvider>
       ) : (
         <>
           <Navbar />

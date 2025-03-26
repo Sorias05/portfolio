@@ -26,6 +26,7 @@ export const emailCopy = "oleksandr.shrol.2005@gmail.com";
 export const defaultAnimationName = "idle";
 export const noImage = "/assets/no-image.webp";
 export const noImage2 = "/assets/no-image2.jpg";
+export const resume = "/CV.pdf";
 
 export const calculateSizes = (isSmall, isMobile, isTablet) => {
   return {
