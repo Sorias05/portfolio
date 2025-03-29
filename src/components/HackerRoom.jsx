@@ -3,7 +3,6 @@ import { useCursor, useGLTF, useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { Bloom, EffectComposer, Select } from "@react-three/postprocessing";
 import { useRef, useState } from "react";
-import toast from "react-hot-toast";
 
 const HackerRoom = (props) => {
   const { nodes, materials } = useGLTF("/models/hacker-room.glb");
@@ -107,9 +106,6 @@ const HackerRoom = (props) => {
         <mesh
           geometry={nodes.table_table_mat_0_12.geometry}
           material={materials.key_mat}
-          onPointerOver={() => setHovered(true)}
-          onPointerOut={() => setHovered(false)}
-          onClick={handleClickMonitor}
         />
         <EffectComposer>
           <Bloom

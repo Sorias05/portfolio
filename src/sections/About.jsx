@@ -1,10 +1,9 @@
 "use client";
-import { Suspense, useState } from "react";
-import Button from "../components/Button";
-import { developer, emailCopy } from "../constants";
+import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import CanvasLoader from "@/components/CanvasLoader";
+import Button from "../components/Button";
 import Globe from "../components/Globe";
+import { developer, emailCopy } from "../constants";
 
 const About = () => {
   const [hasCopied, setHasCopied] = useState(false);

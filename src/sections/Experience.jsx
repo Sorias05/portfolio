@@ -20,7 +20,7 @@ const Experience = () => {
               <ambientLight intensity={7} />
               <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
               <directionalLight position={[10, 10, 10]} intensity={1.5} />
-              <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
+              <OrbitControls enableZoom={false} enableRotate={false} maxPolarAngle={Math.PI / 2} />
               <Suspense fallback={<CanvasLoader />}>
                 <Developer
                   position-y={-3}

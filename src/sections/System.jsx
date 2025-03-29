@@ -79,9 +79,9 @@ const System = () => {
   };
 
   const handleMouseMove = (e) => {
-    if (e.clientX <= 56) {
+    if (e.clientX <= 12) {
       setIsSidebarHidden(false);
-    } else if (isWindowOverSidebar) {
+    } else if (isWindowOverSidebar && e.clientX > 56) {
       setIsSidebarHidden(true);
     }
   };
