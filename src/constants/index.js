@@ -68,7 +68,7 @@ export const workExperiences = [
     id: 1,
     name: "MetaArt",
     pos: "Fullstack Web Developer",
-    duration: "2024",
+    duration: "May 2024 - Dec 2024",
     title:
       "MetaArt is my first company where I was working as an Intern Fullstack Developer. During my internship, I gained hands-on experience with modern web technologies, worked on real-world project, and improved my problem-solving skills. This role allowed me to collaborate with a team, learn best development practices, and enhance my understanding of both frontend and backend development.",
     icon: "/assets/metaart.png",
@@ -123,7 +123,7 @@ export const projects = [
     url: "",
     image: "",
     description:
-      "Sport CRM System is a system that automates the process of keeping records of sports clubs, coaches and club members.",
+      "CRM system that automates the process of keeping records of sports clubs, coaches and club members.",
     duration: "May 2024 - Dec 2024",
     clickable: false,
     tags: [
@@ -163,7 +163,7 @@ export const projects = [
     url: "https://mern-estate-gvzy.onrender.com",
     image: "/assets/my-estate-project.jpeg",
     description:
-      "MyEstate - MERN Stack Pet-Project about real estate marketing, that helps customers buy, rent, sell or lease out real estate.",
+      "MERN stack app for real estate agency that helps customers buy, rent, sell or lease out real estate.",
     duration: "May 2024",
     clickable: true,
     tags: [
@@ -217,7 +217,7 @@ export const projects = [
     url: "https://oleksandr-spotify-clone.netlify.app",
     image: "/assets/spotify-project.png",
     description:
-      "Spotify Clone is a static clone-page project was made using Vanilla HTML/CSS/JavaScript stack.",
+      "A static clone-page project was created using Vanilla HTML/CSS/JavaScript stack.",
     duration: "Feb 2024",
     clickable: true,
     tags: [
@@ -250,7 +250,7 @@ export const projects = [
     url: "https://youtu.be/QIiTY5qZK7Y",
     image: "/assets/eclipse-project.svg",
     description:
-      "EclipseSound - Spotify Clone that serves as IT STEP Academy graduate work for team of 5 members: 4 developers and 1 designer.",
+      "Spotify clone that serves as graduate work for team of 5 members: 4 developers and 1 designer.",
     duration: "Dec 2023 - Mar 2024",
     video: "https://www.youtube.com/embed/QIiTY5qZK7Y",
     clickable: true,

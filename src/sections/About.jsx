@@ -30,7 +30,7 @@ const About = () => {
             <div>
               <p className="grid-headtext">Hi, I am {developer}</p>
               <p className="grid-subtext">
-                With 1 year of experience in Software Engineering.
+                Web Developer with more than 1 year of experience in building Web Applications.
               </p>
             </div>
           </div>
@@ -45,8 +45,8 @@ const About = () => {
             <div>
               <p className="grid-headtext">Tech Stack</p>
               <p className="grid-subtext">
-                I specialize in JavaScript/TypeScript with a focus on React and
-                Next.js ecosystems.
+                I specialize in JavaScript/TypeScript with a focus on React, Node.js and
+                Next.js.
               </p>
             </div>
           </div>
