@@ -9,5 +9,6 @@ export const ReviewSchema = z.object({
     .instanceof(ObjectId, { message: "Invalid user reference" })
     .or(z.string().length(24, "Invalid ObjectId format")),
   user: z.lazy(() => UserSchema).optional(),
+  chosen: z.boolean().default(false),
   createdAt: z.date().default(() => new Date()),
 });

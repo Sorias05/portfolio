@@ -20,6 +20,7 @@ const Page = () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          "only-chosen": "false",
         },
       });
 

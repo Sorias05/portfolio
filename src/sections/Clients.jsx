@@ -20,6 +20,7 @@ const Clients = () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          "only-chosen": "true",
         },
       });
 
@@ -40,11 +41,9 @@ const Clients = () => {
         <div className="flex justify-between">
           <h3 className="head-text">Hear from My Clients</h3>
           <div className="flex items-end gap-5">
-            {reviews.length > 4 && (
-              <a className="nav-li_a" onClick={() => router.replace(`/review`)}>
-                Show All
-              </a>
-            )}
+            <a className="nav-li_a" onClick={() => router.replace(`/review`)}>
+              Show All
+            </a>
             <button
               onClick={() => {
                 if (session) {

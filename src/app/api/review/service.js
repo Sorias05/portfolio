@@ -8,6 +8,7 @@ import {
   update,
   remove,
   removeByUser,
+  getChosen,
 } from "./repository";
 import { ReviewSchema } from "./model";
 import { getUserById } from "../user/service";
@@ -33,9 +34,9 @@ export async function createReview(req) {
   }
 }
 
-export async function getReviews() {
+export async function getReviews(onlyChosen) {
   try {
-    const reviews = await get();
+    const reviews = onlyChosen === "true" ? await getChosen() : await get();
 
     if (!reviews) {
       return NextResponse.json(errors.notFound[0], errors.notFound[1]);
