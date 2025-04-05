@@ -6,16 +6,16 @@ const Review = ({ _id, title, stars, name, image, position }) => {
       <p className="client-text">{title}</p>
 
       <div className="client-content">
-        <div className="flex gap-3">
+        <div className="flex gap-2 overflow-hidden">
           <img src={image} alt={name} className="w-12 h-12 rounded-full" />
           <div className="flex flex-col">
-            <p className="font-semibold text-white-800">{name}</p>
-            <p className="text-white-500 md:text-base text-sm font-light">
+            <p className="font-semibold text-white-800 text-nowrap">{name}</p>
+            <p className="text-white-500 md:text-base text-sm font-light text-nowrap">
               {position}
             </p>
           </div>
         </div>
-        <div className="flex self-center gap-2">
+        <div className="flex self-center justify-end gap-2 min-w-32">
           {Array.from({ length: 5 }).map((_, index) => {
             const hasFraction = stars % 1 !== 0;
             const isHalfStar = index === Math.floor(stars) && hasFraction;

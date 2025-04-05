@@ -4,7 +4,7 @@ import { developer, navLinks } from "../constants";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-const NavItems = () => {
+const NavItems = ({ setIsOpen }) => {
   const { status, data: session } = useSession();
   const router = useRouter();
   return (
@@ -15,6 +15,7 @@ const NavItems = () => {
             className="nav-li_a w-full"
             onClick={() => {
               router.replace(href);
+              setIsOpen(false);
             }}
           >
             {name}
@@ -27,6 +28,7 @@ const NavItems = () => {
             className="nav-li_a flex justify-between"
             onClick={() => {
               router.replace(`/user/${session.user?.id}`);
+              setIsOpen(false);
             }}
           >
             <span className="sm:hidden block nav-li_a w-full">
@@ -52,6 +54,7 @@ const NavItems = () => {
             className="nav-li_a"
             onClick={() => {
               router.replace("/auth/login");
+              setIsOpen(false);
             }}
           >
             Login
@@ -93,13 +96,13 @@ const Navbar = () => {
           </button>
 
           <nav className="sm:flex hidden">
-            <NavItems />
+            <NavItems setIsOpen={setIsOpen} />
           </nav>
         </div>
       </div>
       <div className={`nav-sidebar ${isOpen ? "max-h-screen" : "max-h-0"}`}>
         <nav className="p-5">
-          <NavItems />
+          <NavItems setIsOpen={setIsOpen} />
         </nav>
       </div>
     </header>

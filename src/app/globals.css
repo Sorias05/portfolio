@@ -108,7 +108,7 @@ body {
   }
 
   .client-content {
-    @apply flex flex-row justify-between lg:items-center items-start gap-2 mt-7;
+    @apply flex flex-row justify-between lg:items-center items-start gap-3 mt-7;
   }
 
   /*  work experience section */

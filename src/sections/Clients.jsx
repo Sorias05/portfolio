@@ -40,8 +40,8 @@ const Clients = () => {
       <section className="c-space my-20" id="clients">
         <div className="flex justify-between">
           <h3 className="head-text">Hear from My Clients</h3>
-          <div className="flex items-end gap-5">
-            <a className="nav-li_a" onClick={() => router.replace(`/review`)}>
+          <div className="flex items-center justify-end gap-5">
+            <a className="nav-li_a min-w-20" onClick={() => router.replace(`/review`)}>
               Show All
             </a>
             <button
@@ -54,7 +54,7 @@ const Clients = () => {
                 }
               }}
             >
-              <img src="/assets/add.svg" alt="edit" className="w-6 h-6" />
+              <img src="/assets/add.svg" alt="edit" className="w-6 h-6 min-w-6" />
             </button>
           </div>
         </div>

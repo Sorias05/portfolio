@@ -20,7 +20,11 @@ const Experience = () => {
               <ambientLight intensity={7} />
               <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
               <directionalLight position={[10, 10, 10]} intensity={1.5} />
-              <OrbitControls enableZoom={false} enableRotate={false} maxPolarAngle={Math.PI / 2} />
+              <OrbitControls
+                enableZoom={false}
+                enableRotate={false}
+                maxPolarAngle={Math.PI / 2}
+              />
               <Suspense fallback={<CanvasLoader />}>
                 <Developer
                   position-y={-3}
@@ -54,9 +58,11 @@ const Experience = () => {
                     </div>
                     <div className="sm:p-5 px-2.5 py-5">
                       <p className="font-bold text-white-800">{name}</p>
-                      <p className="text-sm mb-5">
-                        {pos} | {duration}
-                      </p>
+                      <div className="text-sm flex flex-wrap gap-1 mb-5">
+                        <p>{pos}</p>
+                        <p>|</p>
+                        <p>{duration}</p>
+                      </div>
                       <p className="group-hover:text-white transition ease-in-out duration-500">
                         {title}
                       </p>

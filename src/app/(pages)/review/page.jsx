@@ -38,7 +38,7 @@ const Page = () => {
   return (
     <section className="c-space my-24" id="clients">
       <div className="flex justify-between">
-        <h3 className="head-text">Hear from My Clients</h3>
+        <h3 className="head-text">All reviews</h3>
         <div className="flex items-end gap-5">
           <button
             onClick={() => {
