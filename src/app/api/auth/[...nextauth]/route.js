@@ -6,7 +6,7 @@ import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { noImage } from "@/constants";
-import { storage } from "@/firebase";
+import { storage } from "@/app/lib/firebase";
 import {
   createUser,
   getUserByEmail,

@@ -1,19 +1,29 @@
+import { withAuthorization } from "@/app/lib/guards/withAuthorization";
 import { deleteUser, getUserById, updateUser } from "../service";
 
 export async function GET(req) {
-  const url = new URL(req.url);
-  const id = url.pathname.split("/").pop();
+  const id = new URL(req.url).pathname.split("/").pop();
+
+  const auth = await withAuthorization(req, id);
+  if (auth) return auth;
+
   return getUserById(id);
 }
 
 export async function PUT(req) {
-  const url = new URL(req.url);
-  const id = url.pathname.split("/").pop();
+  const id = new URL(req.url).pathname.split("/").pop();
+
+  const auth = await withAuthorization(req, id);
+  if (auth) return auth;
+
   return updateUser(id, req);
 }
 
 export async function DELETE(req) {
-  const url = new URL(req.url);
-  const id = url.pathname.split("/").pop();
+  const id = new URL(req.url).pathname.split("/").pop();
+
+  const auth = await withAuthorization(req, id);
+  if (auth) return auth;
+
   return deleteUser(id);
 }

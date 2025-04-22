@@ -2,10 +2,10 @@
 import { useEffect, useRef, useState } from "react";
 import { signIn } from "next-auth/react";
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { storage } from "@/firebase";
-import { noImage } from "@/constants";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { storage } from "@/app/lib/firebase";
+import { noImage } from "@/constants";
 
 const Page = () => {
   const fileRef = useRef(null);

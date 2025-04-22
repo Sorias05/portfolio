@@ -1,11 +1,11 @@
 "use server";
 import { errors, successes } from "@/constants";
 import { NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
 import { create, get, getByEmail, getById, update, remove } from "./repository";
 import { UserSchema } from "./model";
 import { deleteReviewsByUser } from "../review/service";
-import bcrypt from "bcryptjs";
-import { getDB } from "../mongodb";
+import { getDB } from "../../lib/mongodb";
 
 export async function createUser(req) {
   try {

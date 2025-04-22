@@ -1,5 +1,5 @@
-import { getDB } from "@/app/api/mongodb";
 import { ObjectId } from "mongodb";
+import { getDB } from "@/app/lib/mongodb";
 
 export async function create(reviewData) {
   const db = await getDB();

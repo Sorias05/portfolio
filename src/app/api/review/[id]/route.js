@@ -1,19 +1,33 @@
+import { withAuthorization } from "@/app/lib/guards/withAuthorization";
 import { deleteReview, getReviewById, updateReview } from "../service";
+import { getById } from "../repository";
 
 export async function GET(req) {
-  const url = new URL(req.url);
-  const id = url.pathname.split("/").pop();
+  const id = new URL(req.url).pathname.split("/").pop();
+  const review = await getById(id);
+
+  const authCheck = await withAuthorization(req, review.userId);
+  if (authCheck) return authCheck;
+
   return getReviewById(id);
 }
 
 export async function PUT(req) {
-  const url = new URL(req.url);
-  const id = url.pathname.split("/").pop();
+  const id = new URL(req.url).pathname.split("/").pop();
+  const review = await getById(id);
+
+  const authCheck = await withAuthorization(req, review.userId);
+  if (authCheck) return authCheck;
+
   return updateReview(id, req);
 }
 
 export async function DELETE(req) {
-  const url = new URL(req.url);
-  const id = url.pathname.split("/").pop();
+  const id = new URL(req.url).pathname.split("/").pop();
+  const review = await getById(id); 
+
+  const authCheck = await withAuthorization(req, review.userId);
+  if (authCheck) return authCheck;
+
   return deleteReview(id);
 }

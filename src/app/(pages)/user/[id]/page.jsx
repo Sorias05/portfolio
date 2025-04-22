@@ -3,9 +3,9 @@ import { signOut, useSession } from "next-auth/react";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { storage } from "@/firebase";
 import ErrorPage from "next/error";
 import toast from "react-hot-toast";
+import { storage } from "@/app/lib/firebase";
 import { noImage } from "@/constants";
 import ProfileReviews from "@/sections/ProfileReviews";
 
