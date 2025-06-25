@@ -87,7 +87,7 @@ const System = () => {
   };
 
   return (
-    <main className="w-screen h-screen" onMouseMove={handleMouseMove}>
+    <main className="w-screen h-[100dvh]" onMouseMove={handleMouseMove}>
       <div
         className={`w-full h-full black flex flex-col gap-24 items-center justify-center absolute text-white transition-opacity duration-500 ${
           isLoading ? "opacity-100" : "opacity-0"
