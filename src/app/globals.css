@@ -204,6 +204,7 @@ body {
   background-image: url("/assets/wallpaper.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
   background-position: center;
 }
 
