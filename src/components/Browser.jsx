@@ -1,16 +1,42 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Copy, Globe, Home, RotateCcw } from "lucide-react";
-import { noImage2, projects } from "@/constants";
+import { noImage2 } from "@/constants";
 import toast from "react-hot-toast";
 import ProjectsPage from "./ProjectsPage";
 import VideoPlayer from "./VideoPlayer";
 
 const Browser = () => {
   const [activeProject, setActiveProject] = useState("home");
+  const [projects, setProjects] = useState([]);
   const [url, setUrl] = useState("");
   const [key, setKey] = useState(0);
   const iframeRef = useRef(null);
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const fetchProjects = async () => {
+    try {
+      const response = await fetch(`/api/project`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch projects data");
+      }
+
+      const data = await response.json();
+
+      setProjects(data);
+    } catch (err) {
+      toast.error("Failed to load projects data.");
+    }
+  };
 
   const handleCopyUrl = () => {
     if (url.length > 0) {
@@ -37,18 +63,18 @@ const Browser = () => {
         >
           <Home size={16} />
         </button>
-        {projects.map(
+        {projects && projects.map(
           (project) =>
             project.clickable && (
               <button
-                key={project.id}
+                key={project._id}
                 className={`px-2 py-1 rounded-t-md min-w-8 h-7 ${
-                  activeProject === project.id
+                  activeProject === project._id
                     ? "bg-gray-700"
                     : "bg-gray-600 hover:bg-gray-500"
                 }`}
                 onClick={() => {
-                  setActiveProject(project.id);
+                  setActiveProject(project._id);
                   setUrl(project.url);
                 }}
               >
@@ -97,16 +123,16 @@ const Browser = () => {
       <div className="flex-grow w-full h-full bg-gray-100 rounded-b-md bottom-0">
         {activeProject === "home" ? (
           <ProjectsPage setActiveProject={setActiveProject} setUrl={setUrl} />
-        ) : projects.find((project) => project.id === activeProject)?.video ? (
+        ) : projects.find((project) => project._id === activeProject)?.video ? (
           <VideoPlayer
-            project={projects.find((project) => project.id === activeProject)}
+            project={projects.find((project) => project._id === activeProject)}
           />
         ) : (
           <iframe
             key={key}
             ref={iframeRef}
             className="w-full h-full"
-            src={projects.find((project) => project.id === activeProject)?.url}
+            src={projects.find((project) => project._id === activeProject)?.url}
             sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-storage-access-by-user-activation"
           ></iframe>
         )}

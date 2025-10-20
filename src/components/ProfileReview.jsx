@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import DeletionModal from "./DeletionModal";
 
 const ProfileReview = ({ _id, title, stars, userId, fetchReview }) => {
   const [loading, setLoading] = useState(false);
@@ -199,24 +200,12 @@ const ProfileReview = ({ _id, title, stars, userId, fetchReview }) => {
         </>
       )}
       {showDeleteConfirm && (
-        <div className="deletion">
-          <div className="deletion-container">
-            <p className="field-label">
-              Are you sure you want to delete this review?
-            </p>
-            <div className="flex gap-2">
-              <button
-                onClick={() => setShowDeleteConfirm(false)}
-                className="field-btn"
-              >
-                Cancel
-              </button>
-              <button onClick={deleteReview} className="field-red-btn">
-                {loading ? "Removing..." : "Remove"}
-              </button>
-            </div>
-          </div>
-        </div>
+        <DeletionModal
+          text={"Are you sure you want to remove this review?"}
+          setShowDeleteConfirm={setShowDeleteConfirm}
+          confirm={deleteReview}
+          loading={loading}
+        />
       )}
     </div>
   );

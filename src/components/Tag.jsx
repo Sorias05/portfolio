@@ -1,5 +1,4 @@
 import { noImage2 } from "@/constants";
-import React from "react";
 
 const Tag = ({ img, text, color, isDark }) => {
   return (

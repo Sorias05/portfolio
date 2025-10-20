@@ -63,7 +63,7 @@ const About = () => {
             <div>
               <p className="grid-headtext">I work remotely</p>
               <p className="grid-subtext">
-                I am based in Poland, with remote work available.
+                I am based in Ukraine, with remote work available.
               </p>
               <a href="/#contact" className="w-fit">
                 <Button

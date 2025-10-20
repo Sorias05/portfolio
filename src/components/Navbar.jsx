@@ -27,7 +27,7 @@ const NavItems = ({ setIsOpen }) => {
           <a
             className="nav-li_a flex justify-between"
             onClick={() => {
-              router.replace(`/user/${session.user?.id}`);
+              router.replace(`/profile`);
               setIsOpen(false);
             }}
           >

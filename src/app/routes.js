@@ -20,6 +20,8 @@ const RoutesContent = ({ children }) => {
   useEffect(() => {
     setShow404(false);
     if (status === "loading") return;
+    const isAdminPage = pathname.startsWith("/admin");
+    if (isAdminPage && !session?.user?.isAdmin) router.replace("/");
     if (!session) return;
 
     const completePage = "/auth/complete";

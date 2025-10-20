@@ -125,7 +125,7 @@ body {
   }
 
   .work-content_container {
-    @apply grid grid-cols-[auto_1fr] items-start gap-5 transition-all ease-in-out duration-500 cursor-pointer hover:bg-black-300 rounded-lg sm:px-5 px-2.5;
+    @apply grid grid-cols-[auto_1fr] items-start gap-5 transition-all ease-in-out duration-500 hover:bg-black-300 rounded-lg sm:px-5 px-2.5;
   }
 
   .work-content_logo {
@@ -197,6 +197,15 @@ body {
 
   .deletion-container {
     @apply rounded-lg p-6 bg-black-200 flex flex-col gap-2;
+  }
+
+  /*  admin */
+  .admin-section {
+    @apply w-full flex flex-col items-center justify-center gap-5;
+  }
+
+  .admin-container {
+    @apply p-6 w-full flex flex-col gap-2 border border-black-300 bg-black-200 rounded-lg;
   }
 }
 

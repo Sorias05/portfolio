@@ -97,7 +97,7 @@ const ProfileReviews = ({ userId }) => {
       setLoading(true);
       addReview();
       setLoading(false);
-      setIsReviewEditMode(false);
+      cancelReview(false);
     }
   };
 

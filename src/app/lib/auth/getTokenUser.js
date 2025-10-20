@@ -12,6 +12,6 @@ export async function getTokenUser(req) {
     email: token.email,
     name: token.name,
     isCompleted: token.user?.isCompleted,
-    role: token.user?.role,
+    isAdmin: token.user?.isAdmin,
   };
 }

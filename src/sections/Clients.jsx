@@ -48,7 +48,7 @@ const Clients = () => {
               onClick={() => {
                 if (session) {
                   localStorage.setItem("scrollToReview", "true");
-                  router.replace(`/user/${session.user.id}/#review`);
+                  router.replace(`/profile/#review`);
                 } else {
                   router.replace("/auth/login");
                 }
