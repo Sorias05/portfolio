@@ -3,6 +3,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
+import { useFade } from "@/context/FadeContext";
 import { calculateSizes, developer } from "../constants";
 import CanvasLoader from "../components/CanvasLoader";
 import HackerRoom from "../components/HackerRoom";
@@ -12,7 +13,7 @@ import Cube from "../components/Cube";
 import Rings from "../components/Rings";
 import HeroCamera from "../components/HeroCamera";
 import Button from "../components/Button";
-import { useFade } from "@/context/FadeContext";
+import Arrow from "../components/Arrow";
 
 const Hero = () => {
   const isSmall = useMediaQuery({ maxWidth: 440 });
@@ -49,7 +50,7 @@ const Hero = () => {
       }`}
       id="projects"
     >
-      <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3">
+      <div className="w-full mx-auto flex flex-col sm:mt-32 mt-20 c-space gap-3 z-10">
         <p className="sm:text-3xl text-2xl font-medium text-white text-center font-generalsans">
           Hi, I am {developer} <span className="waving-hand">👋</span>
         </p>
@@ -57,7 +58,7 @@ const Hero = () => {
       </div>
 
       <div
-        className={`w-full h-full fixed inset-0 transition-opacity duration-1000 ${
+        className={`w-full h-full fixed inset-0 transition-opacity duration-1000 z-0 ${
           isLoading ? "opacity-0" : "opacity-100"
         }`}
       >
@@ -77,6 +78,8 @@ const Hero = () => {
             <ReactLogo position={sizes.reactLogoPosition} />
             <Cube position={sizes.cubePosition} />
             <Rings position={sizes.ringPosition} />
+            <Arrow position={sizes.arrowLeftPosition} rotation={[0, 0, 0]} />
+            <Arrow position={sizes.arrowRightPosition} rotation={[0, 0, 90]} />
           </group>
           <ambientLight intensity={1} />
           <directionalLight position={[10, 10, 10]} intensity={0.5} />

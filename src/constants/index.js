@@ -32,7 +32,7 @@ export const animations = {
   salute: "salute",
   clapping: "clapping",
   victory: "victory",
-}
+};
 export const defaultAnimationName = "idle";
 
 export const calculateSizes = (isSmall, isMobile, isTablet) => {
@@ -49,17 +49,17 @@ export const calculateSizes = (isSmall, isMobile, isTablet) => {
     reactLogoPosition: isSmall
       ? [3, 4, 0]
       : isMobile
-      ? [5, 4, 0]
+      ? [7, 4, 0]
       : isTablet
-      ? [5, 4, 0]
-      : [12, 3, 0],
+      ? [8, 3, 0]
+      : [9.5, 5, 0],
     ringPosition: isSmall
       ? [-7, 7, 0]
       : isMobile
-      ? [-12, 9, 0]
+      ? [-13, 7, 0]
       : isTablet
-      ? [-16, 8, 0]
-      : [-23, 8, 0],
+      ? [-18, 7, 0]
+      : [-20, 8, 0],
     targetPosition: isSmall
       ? [-5, -10, -10]
       : isMobile
@@ -67,6 +67,20 @@ export const calculateSizes = (isSmall, isMobile, isTablet) => {
       : isTablet
       ? [-11, -7, -10]
       : [-13, -13, -10],
+    arrowLeftPosition: isSmall
+      ? [-0.35, -4, 0]
+      : isMobile
+      ? [-0.35, -4, 0]
+      : isTablet
+      ? [-0.65, -7, 0]
+      : [-0.65, -7, 0],
+    arrowRightPosition: isSmall
+      ? [5, 4, 0]
+      : isMobile
+      ? [5, 4, 0]
+      : isTablet
+      ? [6, 3.5, 0]
+      : [6, 3.5, 0],
   };
 };
 
