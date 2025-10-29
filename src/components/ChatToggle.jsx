@@ -6,13 +6,21 @@ import ChatBot from "./ChatBot";
 export default function ChatToggle() {
   const [isOpen, setIsOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [isNew, setIsNew] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
+    const storedItem = localStorage.getItem("botpress-message-history");
+    if (!storedItem) {
+      setIsNew(true);
+    } else {
+      setIsNew(false);
+    }
   }, []);
 
   const toggleVisibility = () => {
     setIsOpen(!isOpen);
+    setIsNew(false);
   };
 
   return (
@@ -34,6 +42,12 @@ export default function ChatToggle() {
         className="flex sm:h-16 h-12 sm:w-16 w-12 fixed shadow-md rounded-full items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out"
       >
         <img src="/icon.png" alt="ChatBot" />
+        {isNew && (
+          <span className="absolute top-0.5 right-0.5 flex items-center justify-center h-3 w-3">
+            <span className="btn-ping"></span>
+            <span className="btn-ping_dot"></span>
+          </span>
+        )}
       </button>
     </div>
   );
