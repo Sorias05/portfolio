@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import System from "@/sections/System";
 import Toast from "@/components/Toast";
+import ChatToggle from "@/components/ChatToggle";
 
 const RoutesContent = ({ children }) => {
   const { data: session, status } = useSession();
@@ -43,7 +44,7 @@ const RoutesContent = ({ children }) => {
   return (
     <>
       <div
-        className={`absolute inset-0 z-[999] black transition-opacity duration-1000 pointer-events-none ${
+        className={`absolute inset-0 z-[9999] black transition-opacity duration-1000 pointer-events-none ${
           isFading ? "opacity-100" : "opacity-0"
         }`}
       />
@@ -54,6 +55,7 @@ const RoutesContent = ({ children }) => {
       ) : (
         <>
           <Navbar />
+          <ChatToggle />
           {show404 ? (
             <main className="main">
               <ErrorPage statusCode={404} />

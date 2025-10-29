@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@botpress/webchat": "^3.2.11",
     "@emailjs/browser": "^4.4.1",
     "@gsap/react": "^2.1.2",
     "@next-auth/mongodb-adapter": "^1.1.3",

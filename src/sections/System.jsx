@@ -1,12 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Chrome, File, Power } from "lucide-react";
+import { Chrome, CircleUserRound, File, Power } from "lucide-react";
 import { useFade } from "@/context/FadeContext";
 import { useWindowManager } from "@/context/WindowContext";
+import { developer } from "@/constants";
 import Clock from "@/components/Clock";
 import AppWindow from "@/components/AppWindow";
 import Browser from "@/components/Browser";
 import Resume from "@/components/Resume";
+import ChatBot from "@/components/ChatBot";
 
 const System = () => {
   const { setIsFading, setIsInSystem } = useFade();
@@ -40,6 +42,18 @@ const System = () => {
         return <Resume />;
       },
     },
+    {
+      id: 3,
+      title: `${developer}`,
+      isOpen: false,
+      isOverSidebar: false,
+      getIcon: (size) => {
+        return <CircleUserRound size={size} />;
+      },
+      getApp: () => {
+        return <ChatBot />;
+      },
+    },
   ]);
 
   useEffect(() => {
@@ -69,6 +83,7 @@ const System = () => {
     }, 100);
     setTimeout(() => {
       setIsFading(true);
+      setApps(apps.map((app) => ({ ...app, isOpen: false })));
     }, 2000);
     setTimeout(() => {
       setIsInSystem(false);
