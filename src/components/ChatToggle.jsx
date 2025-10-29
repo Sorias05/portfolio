@@ -19,7 +19,7 @@ export default function ChatToggle() {
     <div className="fixed sm:bottom-8 bottom-7 sm:right-8 right-5 flex items-end justify-end z-[999]">
       {isClient && (
         <div
-          className={`fixed max-w-96 w-full max-h-[650px] h-full sm:bottom-28 bottom-24 overflow-hidden border border-b-2 border-black-500 rounded-md shadow-md transition-all duration-300 ease-in-out
+          className={`fixed max-w-96 w-full sm:max-h-[700px] max-h-[600px] h-full sm:bottom-28 bottom-24 overflow-hidden border border-b-2 border-black-500 rounded-md shadow-md transition-all duration-300 ease-in-out
   ${
     isOpen
       ? "opacity-100 translate-y-0 pointer-events-auto"
