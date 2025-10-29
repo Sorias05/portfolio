@@ -16,10 +16,10 @@ export default function ChatToggle() {
   };
 
   return (
-    <div className="fixed bottom-0 right-0 flex items-end justify-end z-[999]">
+    <div className="fixed sm:bottom-8 bottom-7 sm:right-8 right-5 flex items-end justify-end z-[999]">
       {isClient && (
         <div
-          className={`fixed sm:max-w-96 max-w-80 w-full sm:max-h-[650px] max-h-[600px] h-full right-8 bottom-28 overflow-hidden border border-b-2 border-black-500 rounded-md shadow-md transition-all duration-300 ease-in-out
+          className={`fixed max-w-96 w-full max-h-[650px] h-full sm:bottom-28 bottom-24 overflow-hidden border border-b-2 border-black-500 rounded-md shadow-md transition-all duration-300 ease-in-out
   ${
     isOpen
       ? "opacity-100 translate-y-0 pointer-events-auto"
@@ -31,7 +31,7 @@ export default function ChatToggle() {
       )}
       <button
         onClick={toggleVisibility}
-        className="flex h-16 w-16 fixed right-8 bottom-8 shadow-md rounded-full items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out"
+        className="flex sm:h-16 h-12 sm:w-16 w-12 fixed shadow-md rounded-full items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out"
       >
         <img src="/icon.png" alt="ChatBot" />
       </button>
