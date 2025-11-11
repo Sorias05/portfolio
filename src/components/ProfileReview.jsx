@@ -105,7 +105,7 @@ const ProfileReview = ({ _id, title, stars, userId, fetchReview }) => {
           className="flex flex-col gap-2 max-w-xl w-full"
         >
           <div className="flex flex-col w-full gap-2">
-            <div className="flex self-start gap-2 px-1" name="stars">
+            <div className="flex self-start" name="stars">
               {Array.from({ length: 5 }).map((_, index) => {
                 const starsToShow =
                   hoveredStars !== null ? hoveredStars : selectedStars;
@@ -123,7 +123,7 @@ const ProfileReview = ({ _id, title, stars, userId, fetchReview }) => {
                     }
                     alt="star"
                     name="stars"
-                    className="w-5 h-5 cursor-pointer"
+                    className="w-7 h-5 cursor-pointer px-1"
                     onMouseMove={(event) => handleMouseMove(event, index)}
                     onMouseLeave={handleMouseLeave}
                     onClick={(event) => handleClick(event, index)}
