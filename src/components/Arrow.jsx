@@ -40,6 +40,6 @@ const Arrow = ({ position, rotation }) => {
   );
 };
 
-useGLTF.preload("/arrow.glb");
+useGLTF.preload("/models/arrow.glb");
 
 export default Arrow;

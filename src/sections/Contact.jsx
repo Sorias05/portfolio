@@ -77,7 +77,7 @@ const Contact = () => {
               onChange={handleChange}
               required
               className="field-input"
-              placeholder="John Doe"
+              placeholder="John"
             />
           </div>
           <div className="w-full">
@@ -89,7 +89,7 @@ const Contact = () => {
               onChange={handleChange}
               required
               className="field-input"
-              placeholder="John Doe"
+              placeholder="Doe"
             />
           </div>
         </div>
