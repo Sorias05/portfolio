@@ -77,20 +77,39 @@ const ExperienceForm = ({ close, initialData, fetchExperiences }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log(formData);
-    
+
     if (mode === "Add") {
-      await fetch("/api/experience", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      try {
+        const response = await fetch("/api/experience", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          toast.success("Experience added successfully!");
+        } else {
+          toast.error("Failed to add experience");
+        }
+      } catch (err) {
+        toast.error("Something went wrong");
+      }
     } else {
-      await fetch(`/api/experience/${initialData._id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      try {
+        const response = await fetch(`/api/experience/${initialData._id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          toast.success("Experience added successfully!");
+        } else {
+          toast.error("Failed to add experience");
+        }
+      } catch (err) {
+        toast.error("Something went wrong");
+      }
     }
     setLoading(false);
     close();

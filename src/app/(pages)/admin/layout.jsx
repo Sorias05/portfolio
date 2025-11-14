@@ -13,7 +13,7 @@ const layout = ({ children }) => {
       <section className="my-24 admin-section">
         <h3 className="head-text">Admin</h3>
         <div className="admin-container">
-          <div className="flex gap-2">
+          <div className="grid sm:grid-cols-4 grid-cols-2 gap-2">
             <button
               className="btn w-full"
               onClick={() => router.push("/admin/projects")}
@@ -31,6 +31,12 @@ const layout = ({ children }) => {
               onClick={() => router.push("/admin/experience")}
             >
               Experience
+            </button>
+            <button
+              className="btn w-full"
+              onClick={() => router.push("/admin/reviews")}
+            >
+              Reviews
             </button>
           </div>
           {children}

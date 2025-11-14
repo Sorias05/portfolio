@@ -16,10 +16,11 @@ import { getUserById } from "../user/service";
 export async function createReview(req) {
   try {
     const body = await req.json();
-    const parsedData = ReviewSchema.parse(body);
+    const { user, ...rest } = body;
+    const parsedData = ReviewSchema.parse(rest);
 
-    const user = await getUserById(parsedData.userId);
-    if (!user) {
+    const userData = await getUserById(parsedData.userId);
+    if (!userData) {
       return NextResponse.json(errors.notFound[0], errors.notFound[1]);
     }
 
@@ -88,8 +89,9 @@ export async function getReviewById(id) {
 export async function updateReview(id, req) {
   try {
     const body = await req.json();
-    const parsedData = ReviewSchema.partial().parse(body);
-
+    const { _id, createdAt, user, ...rest } = body;
+    const parsedData = ReviewSchema.partial().parse(rest);
+    
     const result = await update(id, parsedData);
 
     if (result.matchedCount === 0) {

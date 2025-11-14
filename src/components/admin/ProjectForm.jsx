@@ -92,17 +92,37 @@ const ProjectForm = ({ close, initialData, fetchProjects }) => {
     setLoading(true);
     const { tags, ...data } = formData;
     if (mode === "Add") {
-      await fetch("/api/project", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      try {
+        const response = await fetch("/api/project", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          toast.success("Project added successfully!");
+        } else {
+          toast.error("Failed to add project");
+        }
+      } catch (err) {
+        toast.error("Something went wrong");
+      }
     } else {
-      await fetch(`/api/project/${initialData._id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      try {
+        const response = await fetch(`/api/project/${initialData._id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          toast.success("Project added successfully!");
+        } else {
+          toast.error("Failed to add project");
+        }
+      } catch (err) {
+        toast.error("Something went wrong");
+      }
     }
     setLoading(false);
     close();
@@ -148,7 +168,11 @@ const ProjectForm = ({ close, initialData, fetchProjects }) => {
   };
 
   return (
-    <form action="" onSubmit={handleSubmit} className="p-4 border border-white-500 rounded-xl">
+    <form
+      action=""
+      onSubmit={handleSubmit}
+      className="p-4 border border-white-500 rounded-xl"
+    >
       <h2 className="text-2xl font-semibold mb-4 text-white">{mode} Project</h2>
       <div className="w-full flex gap-2">
         <input

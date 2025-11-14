@@ -73,18 +73,39 @@ const TagForm = ({ close, initialData, fetchTags }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     if (mode === "Add") {
-      await fetch("/api/tag", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      try {
+        const response = await fetch("/api/tag", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          toast.success("Tag added successfully!");
+        } else {
+          toast.error("Failed to add tag");
+        }
+      } catch (err) {
+        toast.error("Something went wrong");
+      }
     } else {
-      await fetch(`/api/tag/${initialData._id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      try {
+        const response = await fetch(`/api/tag/${initialData._id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          toast.success("Tag added successfully!");
+        } else {
+          toast.error("Failed to add tag");
+        }
+      } catch (err) {
+        toast.error("Something went wrong");
+      }
     }
     setLoading(false);
     close();
@@ -100,7 +121,11 @@ const TagForm = ({ close, initialData, fetchTags }) => {
   };
 
   return (
-    <form action="" onSubmit={handleSubmit} className="p-4 border border-white-500 rounded-xl w-full">
+    <form
+      action=""
+      onSubmit={handleSubmit}
+      className="p-4 border border-white-500 rounded-xl w-full"
+    >
       <h2 className="text-2xl font-semibold mb-4 text-white">{mode} Tag</h2>
       <div className="w-full flex gap-2">
         <input

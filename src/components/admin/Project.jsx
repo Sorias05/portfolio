@@ -38,14 +38,14 @@ const Project = ({ project, fetchProjects }) => {
     />
   ) : (
     <div key={project._id} className="bg-gray-800 p-4 rounded-lg text-white">
-      <div className="flex justify-between items-center gap-4">
-        <div className="flex gap-4 items-end">
+      <div className="flex justify-between items-start">
+        <div className="flex gap-2 items-end">
           <h2 className="text-xl font-semibold flex items-center gap-2">
             {project.title}
           </h2>
           <Duration start={project.start} end={project.end} />
         </div>
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center min-w-16">
           <button className="acc" onClick={() => setEditMode(true)}>
             <img src="/assets/edit-btn.png" alt="edit" className="w-5 h-5" />
           </button>
