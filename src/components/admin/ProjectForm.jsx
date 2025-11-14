@@ -135,7 +135,6 @@ const ProjectForm = ({ close, initialData, fetchProjects }) => {
       ...formData,
       [name]: type === "checkbox" ? checked : value,
     });
-    console.log(formData);
   };
 
   const handleTags = (tags) => {

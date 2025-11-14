@@ -1,30 +1,32 @@
+"use client";
 import { useAnimations, useFBX, useGLTF } from "@react-three/drei";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { defaultAnimationName } from "../constants";
 
 const Developer = ({ animationName = defaultAnimationName, ...props }) => {
   const group = useRef();
   const { nodes, materials } = useGLTF("/models/human/developer.glb");
 
-  const { animations: idleAnimation } = useFBX("/models/human/idle.fbx");
-  const { animations: saluteAnimation } = useFBX("/models/human/salute.fbx");
-  const { animations: clappingAnimation } = useFBX("/models/human/clapping.fbx");
-  const { animations: victoryAnimation } = useFBX("/models/human/victory.fbx");
+  const idle = useFBX("/models/human/idle.fbx");
+  const salute = useFBX("/models/human/salute.fbx");
+  const clapping = useFBX("/models/human/clapping.fbx");
+  const victory = useFBX("/models/human/victory.fbx");
 
-  idleAnimation[0].name = "idle";
-  saluteAnimation[0].name = "salute";
-  clappingAnimation[0].name = "clapping";
-  victoryAnimation[0].name = "victory";
+  const animations = useMemo(() => {
+    idle.animations[0].name = "idle";
+    salute.animations[0].name = "salute";
+    clapping.animations[0].name = "clapping";
+    victory.animations[0].name = "victory";
 
-  const { actions } = useAnimations(
-    [
-      idleAnimation[0],
-      saluteAnimation[0],
-      clappingAnimation[0],
-      victoryAnimation[0],
-    ],
-    group
-  );
+    return [
+      idle.animations[0],
+      salute.animations[0],
+      clapping.animations[0],
+      victory.animations[0],
+    ];
+  }, [idle, salute, clapping, victory]);
+
+  const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
     actions[animationName]?.reset().fadeIn(0.5).play();

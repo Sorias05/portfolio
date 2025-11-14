@@ -38,8 +38,6 @@ const ReviewForm = ({ close, initialData, fetchReviews }) => {
   }, []);
 
   const fetchUsers = async () => {
-    console.log(formData);
-
     try {
       const response = await fetch(`/api/user`, {
         method: "GET",
