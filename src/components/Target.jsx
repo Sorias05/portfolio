@@ -18,7 +18,7 @@ const Target = (props) => {
   });
 
   return (
-    <group {...props} ref={targetRef} dispose={null} rotation={[0, -Math.PI / 3.5, 0.4]} scale={2}>
+    <group {...props} ref={targetRef} dispose={null} rotation={[0, -Math.PI / 3.5, 0.4]} scale={1.5}>
       <group scale={0.01}>  
         <group
           position={[7.224, 0, 0]}
