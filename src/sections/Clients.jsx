@@ -41,14 +41,14 @@ const Clients = () => {
         <div className="flex justify-between">
           <h3 className="head-text">Hear from My Clients</h3>
           <div className="flex items-center justify-end gap-5">
-            <a className="nav-li_a min-w-20" onClick={() => router.replace(`/review`)}>
+            <a className="nav-li_a min-w-20" onClick={() => router.replace("/reviews")}>
               Show All
             </a>
             <button
               onClick={() => {
                 if (session) {
                   localStorage.setItem("scrollToReview", "true");
-                  router.replace(`/profile/#review`);
+                  router.replace("/profile/#review");
                 } else {
                   router.replace("/auth/login");
                 }

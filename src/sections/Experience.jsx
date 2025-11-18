@@ -54,8 +54,8 @@ const Experience = () => {
               />
               <Suspense fallback={<CanvasLoader />}>
                 <Developer
-                  position-y={-3}
-                  position-z={-0.5}
+                  position-y={-3.5}
+                  position-z={-1}
                   rotation={[0.3, 0, 0]}
                   scale={3}
                   animationName={animationName}
