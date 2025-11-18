@@ -40,11 +40,11 @@ export const calculateSizes = (isSmall, isMobile, isTablet) => {
     deskScale: isSmall ? 0.05 : isMobile ? 0.07 : 0.065,
     deskPosition: isMobile ? [0.5, -4.5, 0] : [0.25, -5.5, 0],
     cubePosition: isSmall
-      ? [3.5, -6.5, 0]
+      ? [3.5, -7, 0]
       : isMobile
-      ? [6, -5, 0]
+      ? [6, -7, 0]
       : isTablet
-      ? [8, -5, 0]
+      ? [8, -5.5, 0]
       : [9, -5.5, 0],
     reactLogoPosition: isSmall
       ? [3, 4, 0]
@@ -61,12 +61,12 @@ export const calculateSizes = (isSmall, isMobile, isTablet) => {
       ? [-18, 7, 0]
       : [-20, 8, 0],
     targetPosition: isSmall
-      ? [-4.5, 0, -10]
+      ? [-4.5, -9, -10]
       : isMobile
-      ? [-8, 0, -10]
+      ? [-8, -9, -10]
       : isTablet
-      ? [-12, 0, -10]
-      : [-14, 0, -10],
+      ? [-12, -9, -10]
+      : [-14, -9, -10],
     arrowLeftPosition: isSmall
       ? [-0.15, -4.3, 0]
       : isMobile
