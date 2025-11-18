@@ -31,7 +31,7 @@ const Hero = () => {
   }, []);
 
   const handleMonitorClick = () => {
-    document.getElementById("home")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
     setTimeout(() => {
       setIsZoomed(true);
       setIsFading(true);
