@@ -30,7 +30,7 @@ const Footer = () => {
         </div> */}
       </div>
       <p className="text-white-500 mx-4">
-        © 2025 Oleksandr Shrol. All rights reserved.
+        © {new Date().getFullYear()} Oleksandr Shrol. All rights reserved.
       </p>
     </footer>
   );
