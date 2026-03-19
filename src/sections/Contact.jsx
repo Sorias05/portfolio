@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { developer, emailConfig, firebaseConfig } from "@/constants";
+import { developer, emailConfig } from "@/constants";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 

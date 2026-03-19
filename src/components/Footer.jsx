@@ -11,7 +11,7 @@ const Footer = () => {
         <a href="https://github.com/Sorias05" className="social-icon">
           <img src="/assets/github.svg" alt="github" className="w-1/2 h-1/2" />
         </a>
-        <a
+        {/* <a
           href="https://www.linkedin.com/in/oleksandr-shrol"
           className="social-icon"
         >
@@ -20,7 +20,7 @@ const Footer = () => {
             alt="twitter"
             className="w-1/2 h-1/2"
           />
-        </a>
+        </a> */}
         {/* <div className="social-icon">
           <img
             src="/assets/instagram.svg"
